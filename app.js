@@ -10,11 +10,14 @@ const budgetRouter=require('./routes/budgetRoutes')
 const bookingRouter = require('./routes/bookingRoutes');
 const app = express();
 
-app.use(cors({
-    origin: 'http://localhost:3001',
-    credentials: true
-}))
+const corsOptions = {
+  origin: 'http://localhost:3001', // Allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+  credentials: true, // Allow cookies and authorization headers to be sent
+};
 
+app.use(cors(corsOptions));
 app.use(express.json())
 
 app.use(morgan('dev'))
