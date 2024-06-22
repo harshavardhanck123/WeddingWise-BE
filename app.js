@@ -11,7 +11,7 @@ const bookingRouter = require('./routes/bookingRoutes');
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:3001', // Allow requests from this origin
+  origin: 'https://wedding-wise.netlify.app/login', // Allow requests from this origin
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
   credentials: true, // Allow cookies and authorization headers to be sent
