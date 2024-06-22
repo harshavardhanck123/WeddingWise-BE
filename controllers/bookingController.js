@@ -42,7 +42,9 @@ const bookingController = {
 
     getBookings: async (req, res) => {
         try {
-            const bookings = await Booking.find().populate('eventId vendorId');
+            const bookings = await Booking.find() .populate('userId', 'name email') // Populate user information with only name and email fields
+            .populate('eventId', 'title description date') // Populate event information
+            .populate('vendorId', 'name service contact'); // Populate vendor information;
             res.json(bookings);
         } catch (error) {
             res.status(400).json({ error: error.message });
@@ -52,7 +54,10 @@ const bookingController = {
     getBookingById: async (req, res) => {
         try {
             const bookingId = req.params.id;
-            const booking = await Booking.findById(bookingId).populate('userId eventId vendorId');
+            const booking = await Booking.findById(bookingId)
+            .populate('userId', 'name email') // Populate user information with only name and email fields
+            .populate('eventId', 'title description date') // Populate event information
+            .populate('vendorId', 'name service contact'); // Populate vendor information;
 
             if (!booking) {
                 return res.status(404).json({ message: 'Booking not found' });
