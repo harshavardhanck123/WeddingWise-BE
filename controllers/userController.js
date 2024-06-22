@@ -1,7 +1,7 @@
 const User=require('../models/username')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const config = require('../utils/config');
+const config = require('../utils/config.js');
 const mongoose=require('mongoose')
 const userController={
 // Register a new user
