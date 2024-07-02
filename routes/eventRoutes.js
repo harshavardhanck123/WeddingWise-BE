@@ -4,7 +4,7 @@ const eventController = require('../controllers/eventController');
 const router = express.Router();
 
 router.post('/',auth.checkAuth,eventController.create)
-router.get('/',auth.checkAuth,eventController.getAllEvents)
+router.get('/', eventController.getAllEvents)
 router.get('/search',eventController.searchEvents);
 router.get('/:id',auth.checkAuth,eventController.getEvent)
 router.put('/:id',auth.checkAuth,auth.isAdmin,eventController.updateEvent)
